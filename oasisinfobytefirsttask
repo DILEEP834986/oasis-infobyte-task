@@ -1,0 +1,85 @@
+ddef convert_length(value, from_unit, to_unit):
+    # Define conversion factors for length units
+    conversion_factors = {
+        'meters': 1.0,
+        'feet': 3.28084,
+        'inches': 39.3701,
+        'centimeters': 100.0,
+        'kilometers': 0.001,
+        'miles': 0.000621371,
+    }
+    
+    if from_unit in conversion_factors and to_unit in conversion_factors:
+        return value * conversion_factors[to_unit] / conversion_factors[from_unit]
+    else:
+        return None
+
+def convert_mass(value, from_unit, to_unit):
+    # Define conversion factors for mass units
+    conversion_factors = {
+        'grams': 1.0,
+        'kilograms': 0.001,
+        'pounds': 0.00220462,
+        'ounces': 0.035274,
+    }
+    
+    if from_unit in conversion_factors and to_unit in conversion_factors:
+        return value * conversion_factors[to_unit] / conversion_factors[from_unit]
+    else:
+        return None
+
+def convert_temperature(value, from_unit, to_unit):
+    if from_unit == 'celsius' and to_unit == 'fahrenheit':
+        return (value * 9/5) + 32
+    elif from_unit == 'fahrenheit' and to_unit == 'celsius':
+        return (value - 32) * 5/9
+    else:
+        return None
+
+def main():
+    print("Unit Converter")
+    print("Available categories:")
+    print("1. Length")
+    print("2. Mass")
+    print("3. Temperature")
+    
+    category = input("Select a category (1/2/3): ")
+    
+    if category == '1':
+        from_unit = input("Enter the source length unit: ").lower()
+        to_unit = input("Enter the target length unit: ").lower()
+        value = float(input("Enter the value to convert: "))
+        result = convert_length(value, from_unit, to_unit)
+        
+        if result is not None:
+            print(f"{value} {from_unit} is equal to {result} {to_unit}")
+        else:
+            print("Invalid units selected.")
+    
+    elif category == '2':
+        from_unit = input("Enter the source mass unit: ").lower()
+        to_unit = input("Enter the target mass unit: ").lower()
+        value = float(input("Enter the value to convert: "))
+        result = convert_mass(value, from_unit, to_unit)
+        
+        if result is not None:
+            print(f"{value} {from_unit} is equal to {result} {to_unit}")
+        else:
+            print("Invalid units selected.")
+    
+    elif category == '3':
+        from_unit = input("Enter the source temperature unit (celsius/fahrenheit): ").lower()
+        to_unit = input("Enter the target temperature unit (celsius/fahrenheit): ").lower()
+        value = float(input("Enter the value to convert: "))
+        result = convert_temperature(value, from_unit, to_unit)
+        
+        if result is not None:
+            print(f"{value} {from_unit} is equal to {result} {to_unit}")
+        else:
+            print("Invalid units selected.")
+    
+    else:
+        print("Invalid category selected.")
+
+if __name__ == "__main__":
+    main()
