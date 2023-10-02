@@ -39,17 +39,17 @@ def main():
 
     while True:
         print("\nOptions:")
-        print("1. List tasks")
-        print("2. Add task")
-        print("3. Complete task")
-        print("4. Quit")
+        print("1. List tasks ")
+        print("2. Add another task")
+        print("3. write your Complete task")
+        print("4. end")
 
         choice = input("Enter your choice: ")
 
         if choice == '1':
             list_tasks(tasks)
         elif choice == '2':
-            new_task = input("Enter the task description: ")
+            new_task = input("Enter the task what you want: ")
             add_task(tasks, new_task)
         elif choice == '3':
             list_tasks(tasks)
